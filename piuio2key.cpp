@@ -39,7 +39,7 @@ int nIDHigh[11][4] = {
 	{ IDC_CUSTOM37, IDC_CUSTOM40, IDC_CUSTOM38, IDC_CUSTOM39 },
 	{ IDC_CUSTOM41, IDC_CUSTOM42, IDC_CUSTOM43, IDC_CUSTOM44 }
 };
-int size = sizeof(nbits) / sizeof(int);
+int siz = sizeof(nbits) / sizeof(int);
 
 // Global Variables:
 HINSTANCE		hInst;	// current instance
@@ -69,10 +69,10 @@ String GetLastErrorAsString()
 		return String(); //No error message has been recorded
 
 	LPTSTR messageBuffer = nullptr;
-	size_t size = FormatMessage(FORMAT_MESSAGE_ALLOCATE_BUFFER | FORMAT_MESSAGE_FROM_SYSTEM | FORMAT_MESSAGE_IGNORE_INSERTS,
+	size_t sizez = FormatMessage(FORMAT_MESSAGE_ALLOCATE_BUFFER | FORMAT_MESSAGE_FROM_SYSTEM | FORMAT_MESSAGE_IGNORE_INSERTS,
 		NULL, errorMessageID, MAKELANGID(LANG_NEUTRAL, SUBLANG_DEFAULT), (LPTSTR)&messageBuffer, 0, NULL);
 
-	String message(messageBuffer, size);
+	String message(messageBuffer, sizez);
 
 	//Free the buffer.
 	LocalFree(messageBuffer);
@@ -196,7 +196,7 @@ int APIENTRY _tWinMain(HINSTANCE hInstance,
 				Sleep(10);
 				//hdc = GetDC(hDiag);
 			}
-			for (int i = 0; i < size; i++)
+			for (int i = 0; i < siz; i++)
 			//for (unsigned iBtn = 0; iBtn < 32; ++iBtn)
 			{
 				unsigned iBtnA = nbits[i];
