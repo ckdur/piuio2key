@@ -1,0 +1,3 @@
+[submodule "libini"]
+	path = libini
+	url = https://github.com/pcercuei/libini.git

@@ -5,6 +5,7 @@
 #include "stdafx.h"
 #include "piuio2key.h"
 #include "PIUIO.h"
+#include "libini/ini.h"
 
 using namespace std;
 
@@ -88,6 +89,112 @@ inline bool IsBitSet(const T &data, int bit)
 	return data & ((T)1 << (bits - bit));
 }
 
+void OpenFromConfig(char* path) {
+	struct INI* ini;
+	ini = ini_open(path);
+	if (!ini)   // Just straight fail. The program already has a default
+	{
+		MessageBox((HWND)0, _T("Configuration not detected. Defaults loaded."), _T("ERROR"), MB_ICONASTERISK);
+		return;
+	}
+
+	while (1) {
+		const char* buf;
+		char* name;
+		size_t name_len;
+		int res = ini_next_section(ini, &buf, &name_len);
+		if (!res) {
+			printf("End of file.\n");
+			break;
+		}
+		if (res < 0) {
+			printf("ERROR: code %i\n", res);
+			goto err;
+		}
+
+		name = (char*)alloca(name_len + 1);
+		name[name_len] = '\0';
+		memcpy(name, buf, name_len);
+		printf("Opening section: \'%s\'\n", name);
+
+		if (!strcmp(name, "keymap")) {
+
+			while (1) {
+				const char* buf2;
+				char* key, * value;
+				size_t key_len, value_len;
+				res = ini_read_pair(ini, &buf, &key_len, &buf2, &value_len);
+				if (!res) {
+					printf("No more data.\n");
+					break;
+				}
+				if (res < 0) {
+					printf("ERROR: code %i\n", res);
+					goto err;
+				}
+
+				key = (char*)alloca(key_len + 1);
+				key[key_len] = '\0';
+				memcpy(key, buf, key_len);
+				value = (char*)alloca(value_len + 1);
+				value[value_len] = '\0';
+				memcpy(value, buf2, value_len);
+				int number = (int)strtol(value, NULL, 0);
+				if (errno == EINVAL) continue; // Cannot convert to hex
+
+				if (!strcmp(key, "MAP_1P_7")) {
+					wscan[0] = (DWORD)number;
+				}
+				if (!strcmp(key, "MAP_1P_9")) {
+					wscan[1] = (DWORD)number;
+				}
+				if (!strcmp(key, "MAP_1P_5")) {
+					wscan[2] = (DWORD)number;
+				}
+				if (!strcmp(key, "MAP_1P_1")) {
+					wscan[3] = (DWORD)number;
+				}
+				if (!strcmp(key, "MAP_1P_3")) {
+					wscan[4] = (DWORD)number;
+				}
+				if (!strcmp(key, "MAP_2P_7")) {
+					wscan[5 + 0] = (DWORD)number;
+				}
+				if (!strcmp(key, "MAP_2P_9")) {
+					wscan[5 + 1] = (DWORD)number;
+				}
+				if (!strcmp(key, "MAP_2P_5")) {
+					wscan[5 + 2] = (DWORD)number;
+				}
+				if (!strcmp(key, "MAP_2P_1")) {
+					wscan[5 + 3] = (DWORD)number;
+				}
+				if (!strcmp(key, "MAP_2P_3")) {
+					wscan[5 + 4] = (DWORD)number;
+				}
+
+				// COIN1, COIN2, CONFIG, SERVICE
+				if (!strcmp(key, "MAP_COIN1")) {
+					wscan[10 + 0] = (DWORD)number;
+				}
+				if (!strcmp(key, "MAP_COIN2")) {
+					wscan[10 + 1] = (DWORD)number;
+				}
+				if (!strcmp(key, "MAP_CONFIG")) {
+					wscan[10 + 2] = (DWORD)number;
+				}
+				if (!strcmp(key, "MAP_SERVICE")) {
+					wscan[10 + 3] = (DWORD)number;
+				}
+			}
+
+		}
+	}
+
+	err:
+	ini_close(ini);
+}
+
 HWND hDiag;
 int APIENTRY _tWinMain(HINSTANCE hInstance,
 	HINSTANCE hPrevInstance,
@@ -98,10 +205,30 @@ int APIENTRY _tWinMain(HINSTANCE hInstance,
 	HACCEL hAccelTable;
 	char CabLights;
 
+	// Try to get the configuration. The command line may have the file
+	LPWSTR* szArglist;
+	int nArgs;
+	szArglist = CommandLineToArgvW(GetCommandLine(), &nArgs);
+
+	if (nArgs >= 2) {
+		char buffer[500];
+		wcstombs(buffer, szArglist[1], 500);
+		OpenFromConfig(buffer);
+	}
+	else
+	{
+		OpenFromConfig("default.ini");
+	}
+
+	//          Now nArgs is your argc and szarglist is your argv
+
+	LocalFree(szArglist);
+
+
 	g_ihPIUIO = new InputHandler_PIUIO();
 	if (!g_ihPIUIO->m_bFoundDevice)
 	{
-		MessageBox((HWND)0, _T("PIUIO not detected\nIf I don't have any PIUIO there is no reason to live!.\nI'm gonna die!. Ciao! BANG!\n\nNah Just kidding, just there is no I/O"), _T("ERROR"), MB_ICONSTOP);
+		MessageBox((HWND)0, _T("PIUIO not detected\nIf there is no PIUIO, is not possible to pull the input data.\nPlease close this application (tray -> right click -> close), then check drivers are OK"), _T("ERROR"), MB_ICONSTOP);
 	}
 
 #ifdef PIUIO2KEY_SUPPORT_PIPE

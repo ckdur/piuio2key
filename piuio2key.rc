@@ -15,7 +15,7 @@
 #undef APSTUDIO_READONLY_SYMBOLS
 
 /////////////////////////////////////////////////////////////////////////////
-// English (United States) resources
+// 英語 (米国) resources
 
 #if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ENU)
 LANGUAGE LANG_ENGLISH, SUBLANG_ENGLISH_US
@@ -29,6 +29,7 @@ LANGUAGE LANG_ENGLISH, SUBLANG_ENGLISH_US
 // Icon with lowest ID value placed first to ensure application icon
 // remains consistent on all systems.
 IDI_STEALTHDLG          ICON                    "StealthDialog.ico"
+
 
 /////////////////////////////////////////////////////////////////////////////
 //
@@ -52,8 +53,8 @@ STYLE DS_SETFONT | DS_MODALFRAME | DS_FIXEDSYS | WS_CAPTION | WS_SYSMENU
 CAPTION "About"
 FONT 8, "MS Shell Dlg", 0, 0, 0x0
 BEGIN
-    ICON            IDI_STEALTHDLG,IDC_MYICON,14,13,21,20
-    LTEXT           "This is a PIUIO2KEY wrapper. CkDur is the best! :D",IDC_STATIC,52,15,164,8,SS_NOPREFIX
+    ICON            IDI_STEALTHDLG,IDC_MYICON,14,13,20,20
+    LTEXT           "This is a PIUIO2KEY wrapper. Done by CKDur.",IDC_STATIC,52,15,164,8,SS_NOPREFIX
     DEFPUSHBUTTON   "OK",IDOK,119,40,30,13,WS_GROUP
 END
 
@@ -102,12 +103,12 @@ BEGIN
 END
 #endif    // APSTUDIO_INVOKED
 
-#endif    // English (United States) resources
+#endif    // 英語 (米国) resources
 /////////////////////////////////////////////////////////////////////////////
 
 
 /////////////////////////////////////////////////////////////////////////////
-// Spanish (Colombia) resources
+// スペイン語 (コロンビア) resources
 
 #if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ESO)
 LANGUAGE LANG_SPANISH, SUBLANG_SPANISH_COLOMBIA
@@ -193,7 +194,7 @@ BEGIN
 END
 #endif    // APSTUDIO_INVOKED
 
-#endif    // Spanish (Colombia) resources
+#endif    // スペイン語 (コロンビア) resources
 /////////////////////////////////////////////////////////////////////////////
 
 
