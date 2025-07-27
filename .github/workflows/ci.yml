@@ -17,8 +17,8 @@ jobs:
         run: |
           Invoke-WebRequest -Uri https://github.com/mcuee/libusb-win32/releases/download/release_1.4.0.0/libusb-win32-bin-1.4.0.0.zip -OutFile libusb.zip
           Expand-Archive libusb.zip -DestinationPath libusb
-          mv libusb\lib\msvc\libusb.lib .\lib
-          mv libusb\include\lusb0_usb.h .\include
+          mv libusb\libusb-win32-bin-1.4.0.0\lib\msvc\libusb.lib .\lib
+          mv libusb\libusb-win32-bin-1.4.0.0\include\lusb0_usb.h .\include
       - name: Build piuio2key
         run: |
           devenv ".\piuio2key.sln" /build "Release|x86"
