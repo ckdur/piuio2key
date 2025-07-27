@@ -15,7 +15,7 @@ jobs:
           arch: x86
       - name: Download libusb
         run: |
-          curl -o libusb.zip https://github.com/mcuee/libusb-win32/releases/download/release_1.4.0.0/libusb-win32-bin-1.4.0.0.zip
+          Invoke-WebRequest -Uri https://github.com/mcuee/libusb-win32/releases/download/release_1.4.0.0/libusb-win32-bin-1.4.0.0.zip -OutFile libusb.zip
           Expand-Archive libusb.zip -DestinationPath libusb
           mv libusb\lib\msvc\libusb.lib .\lib
           mv libusb\include\lusb0_usb.h .\include
