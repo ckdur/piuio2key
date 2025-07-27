@@ -8,21 +8,18 @@ This project contains the source code for the piuio2key (io2key). The program do
 
 # Build
 
-- First, you need to create several folders in `D:\usr`, namely `lib` and `include`.
-- Download the latest release of the windows version of libusb, which can be found in
- [https://sourceforge.net/projects/libusb-win32/files/libusb-win32-releases/1.2.6.0/]. 
- Download the libusb-win32-bin-1.2.6.0.zip file.
+- Download the latest release of the windows version of [libusb](https://github.com/mcuee/libusb-win32/releases). 
+ Download the libusb-win32-bin-1.4.0.0.zip file.
 - Extract it, then copy the following files
-    `libusb-win32-bin-1.2.6.0\lib\msvc\libusb.lib` to `D:\usr\lib`
-    `libusb-win32-bin-1.2.6.0\include\lusb0_usb.h` to `D:\usr\include`
+    `libusb-win32-bin-1.4.0.0\lib\msvc\libusb.lib` to `.\lib`
+    `libusb-win32-bin-1.4.0.0\include\lusb0_usb.h` to `.\include`
 - Open VisualStudio, and open `piuio2key.vcxproj`
 - Compile
 
 # Make the driver
 
-- Download the latest release of the windows version of libusb, which can be found in
- [https://sourceforge.net/projects/libusb-win32/files/libusb-win32-releases/1.2.6.0/]. 
- Download the libusb-win32-bin-1.2.6.0.zip file.
-- In `libusb-win32-bin-1.2.6.0\lib`, open the `inf-wizard.exe`
-- Follow the steps (with the IO connected) to create the driver.
-- More easily, you can just download the main libusb-filter from [https://sourceforge.net/projects/libusb-win32]
+- Download [zadig](https://github.com/pbatard/libwdi/releases) and extract it.
+- Run zadig, click the long dropdown menu and select `EZ-USB FX2` device.
+
+- Click arrow down button on `WinUSB` text box to select `libusb-win32`.
+- Click `Install WCID Driver` button.
