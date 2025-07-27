@@ -21,7 +21,7 @@ jobs:
           mv libusb\libusb-win32-bin-1.4.0.0\include\lusb0_usb.h .\include
       - name: Build piuio2key
         run: |
-          devenv ".\piuio2key.sln" /build "Release|x86"
+          msbuild .\piuio2key.sln /property:Configuration=Release /property:Platform="x86"
       - name: Upload artifacts
         uses: actions/upload-artifact@v4
         with:
