@@ -1,0 +1,41 @@
+on:
+  - 'push'
+
+name: Build and Release
+
+jobs:
+  build:
+    runs-on: windows-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      - name: Set up MSVC
+        uses: ilammy/msvc-dev-cmd@v1
+        with:
+          arch: x86
+      - name: Download libusb
+        run: |
+          curl -o libusb.zip https://github.com/mcuee/libusb-win32/releases/download/release_1.4.0.0/libusb-win32-bin-1.4.0.0.zip
+          Expand-Archive libusb.zip -DestinationPath libusb
+          mv libusb\lib\msvc\libusb.lib .\lib
+          mv libusb\include\lusb0_usb.h .\include
+      - name: Build piuio2key
+        run: |
+          devenv ".\piuio2key.sln" /build "Release|x86"
+      - name: Upload artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: piuio2key-release
+          path: |
+            .\Release\piuio2key.exe
+            .\Release\piuio2key.pdb
+      - name: Create Release
+        uses: softprops/action-gh-release@v2
+        if: github.ref_type == 'tag'
+        with:
+          body: |
+            Automation release for ${{ github.ref }}
+
+            Install [MSVC Redistributable 2015](https://www.microsoft.com/en-us/download/details.aspx?id=48145) if you don't have it installed.
+          files: |
+            ./Release/piuio2key.exe
