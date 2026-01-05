@@ -15,7 +15,7 @@
 #undef APSTUDIO_READONLY_SYMBOLS
 
 /////////////////////////////////////////////////////////////////////////////
-// 英語 (米国) resources
+// English (United States) resources
 
 #if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ENU)
 LANGUAGE LANG_ENGLISH, SUBLANG_ENGLISH_US
@@ -103,12 +103,12 @@ BEGIN
 END
 #endif    // APSTUDIO_INVOKED
 
-#endif    // 英語 (米国) resources
+#endif    // English (United States) resources
 /////////////////////////////////////////////////////////////////////////////
 
 
 /////////////////////////////////////////////////////////////////////////////
-// スペイン語 (コロンビア) resources
+// Spanish (Colombia) resources
 
 #if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ESO)
 LANGUAGE LANG_SPANISH, SUBLANG_SPANISH_COLOMBIA
@@ -173,6 +173,18 @@ BEGIN
     LTEXT           "Coin2",IDC_STATIC,52,129,21,9
     LTEXT           "Service",IDC_STATIC,81,129,24,9
     LTEXT           "Test",IDC_STATIC,112,129,21,9
+    LTEXT           "Driver",IDC_STATIC,143,127,21,9
+    EDITTEXT        IDC_CUSTOM45,166,126,65,11,ES_AUTOHSCROLL | ES_READONLY | WS_DISABLED
+    EDITTEXT        IDC_CUSTOM46,30,21,8,12,ES_AUTOHSCROLL | ES_READONLY | WS_DISABLED
+    EDITTEXT        IDC_CUSTOM47,98,21,8,12,ES_AUTOHSCROLL | ES_READONLY | WS_DISABLED
+    EDITTEXT        IDC_CUSTOM48,64,54,8,12,ES_AUTOHSCROLL | ES_READONLY | WS_DISABLED
+    EDITTEXT        IDC_CUSTOM49,29,88,8,12,ES_AUTOHSCROLL | ES_READONLY | WS_DISABLED
+    EDITTEXT        IDC_CUSTOM50,98,88,8,12,ES_AUTOHSCROLL | ES_READONLY | WS_DISABLED
+    EDITTEXT        IDC_CUSTOM51,148,21,8,12,ES_AUTOHSCROLL | ES_READONLY | WS_DISABLED
+    EDITTEXT        IDC_CUSTOM52,216,21,8,12,ES_AUTOHSCROLL | ES_READONLY | WS_DISABLED
+    EDITTEXT        IDC_CUSTOM53,181,54,8,12,ES_AUTOHSCROLL | ES_READONLY | WS_DISABLED
+    EDITTEXT        IDC_CUSTOM54,146,88,8,12,ES_AUTOHSCROLL | ES_READONLY | WS_DISABLED
+    EDITTEXT        IDC_CUSTOM55,216,88,8,12,ES_AUTOHSCROLL | ES_READONLY | WS_DISABLED
 END
 
 
@@ -194,7 +206,7 @@ BEGIN
 END
 #endif    // APSTUDIO_INVOKED
 
-#endif    // スペイン語 (コロンビア) resources
+#endif    // Spanish (Colombia) resources
 /////////////////////////////////////////////////////////////////////////////
 
 

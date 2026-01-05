@@ -54,6 +54,17 @@
 #define IDC_CUSTOM43                    1042
 #define IDC_CUSTOM44                    1043
 #define IDC_EDIT1                       1044
+#define IDC_CUSTOM45                    1044
+#define IDC_CUSTOM46                    1045
+#define IDC_CUSTOM47                    1046
+#define IDC_CUSTOM48                    1047
+#define IDC_CUSTOM49                    1048
+#define IDC_CUSTOM50                    1049
+#define IDC_CUSTOM51                    1050
+#define IDC_CUSTOM52                    1051
+#define IDC_CUSTOM53                    1052
+#define IDC_CUSTOM54                    1053
+#define IDC_CUSTOM55                    1054
 #define IDC_STATIC                      -1
 
 // Next default values for new objects

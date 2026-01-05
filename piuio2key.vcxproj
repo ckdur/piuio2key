@@ -86,21 +86,29 @@
     <Text Include="ReadMe.txt" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="input_handler.h" />
     <ClInclude Include="libini\ini.h" />
+    <ClInclude Include="lxio.h" />
     <ClInclude Include="PIUIO.h" />
     <ClInclude Include="piuio2key.h" />
+    <ClInclude Include="piuiobutton.h" />
     <ClInclude Include="Resource.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="targetver.h" />
+    <ClInclude Include="usb_driver.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="input_handler.cpp" />
     <ClCompile Include="libinicxx.cpp" />
+    <ClCompile Include="lxio.cpp" />
     <ClCompile Include="PIUIO.cpp" />
     <ClCompile Include="piuio2key.cpp" />
+    <ClCompile Include="piuiobutton.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
     </ClCompile>
+    <ClCompile Include="usb_driver.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="piuio2key.rc" />

@@ -36,6 +36,18 @@
     <ClInclude Include="libini\ini.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="usb_driver.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="input_handler.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="lxio.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="piuiobutton.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -48,6 +60,18 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="libinicxx.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="usb_driver.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="lxio.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="input_handler.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="piuiobutton.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
